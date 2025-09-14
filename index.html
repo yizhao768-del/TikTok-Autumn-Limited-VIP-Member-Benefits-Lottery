@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 204, 255, 0.7), rgba(255, 165, 0, 0.7));
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,10 +16,23 @@
       color: white;
       text-align: center;
       overflow: hidden;
+      animation: backgroundAnimation 10s infinite alternate;
+    }
+
+    @keyframes backgroundAnimation {
+      0% {
+        background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 204, 255, 0.7), rgba(255, 165, 0, 0.7));
+      }
+      50% {
+        background: radial-gradient(circle, rgba(255, 255, 0, 0.7), rgba(255, 0, 0, 0.7), rgba(0, 255, 255, 0.7));
+      }
+      100% {
+        background: radial-gradient(circle, rgba(0, 255, 0, 0.7), rgba(255, 0, 255, 0.7), rgba(255, 0, 0, 0.7));
+      }
     }
 
     #lottery-container {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.7);
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -27,6 +40,12 @@
       max-width: 450px;
       position: relative;
       overflow: hidden;
+      animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     h1 {
@@ -34,20 +53,7 @@
       margin-bottom: 20px;
       font-weight: bold;
       color: #ffeb3b;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    li {
-      margin: 15px 0;
-      font-size: 1.2rem;
-      font-weight: 400;
-      text-align: left;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     }
 
     button {
@@ -76,6 +82,7 @@
       font-size: 1.5rem;
       font-weight: bold;
       color: #ffeb3b;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     }
 
     .spinner {
@@ -94,7 +101,7 @@
     }
 
     #message {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #fff;
       margin-top: 20px;
       font-weight: 500;
@@ -103,21 +110,15 @@
     #message span {
       color: #ffeb3b;
     }
+
   </style>
 </head>
 <body>
   <div id="lottery-container">
     <h1>TikTok Autumn Limited VIP Member Benefits Lottery</h1>
-    <ul>
-      <li>1️⃣ Smart Home Set – Make your home smarter and more stylish!</li>
-      <li>2️⃣ British Brand Fashion Accessories – Showcase iconic British designs and stand out with exceptional taste!</li>
-      <li>3️⃣ Premium Skincare Sets – Luxurious care that will make you glow every day!</li>
-      <li>4️⃣ Classic British Tea Set – Enjoy authentic British tea culture from home!</li>
-      <li>5️⃣ Mystery Grand Prize – More surprise gifts to elevate your VIP status!</li>
-    </ul>
     <button id="lottery-btn" onclick="drawLottery()">Spin the Wheel!</button>
-    <div id="result"></div>
     <div id="spinner" class="spinner" style="display: none;"></div>
+    <div id="result"></div>
     <div id="message"></div>
   </div>
 
@@ -152,8 +153,8 @@
         document.getElementById('spinner').style.display = 'none';
         document.getElementById('result').textContent = `🎉 Congratulations! You've won: ${randomPrize}`;
         document.getElementById('message').innerHTML = `
-          🎉 Please contact our receptionist to claim your prize. <br>
-          📞 Our contact details are available in your inbox! <span style="color: #ffeb3b;">Good luck!</span>
+          🎉 Please contact our reception via <a href="https://t.me/your-reception-bot" target="_blank" style="color: #ffeb3b; font-weight: bold;">Telegram</a> and tell them what you won! <br>
+          🏆 Complete the VIP3 task to claim your prize! <span style="color: #ffeb3b;">Good luck!</span>
         `;
 
         // Disable the button to prevent further draws
@@ -164,4 +165,5 @@
   </script>
 </body>
 </html>
+
 
