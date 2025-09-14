@@ -1,207 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Autumn Limited VIP Member Benefits Lottery</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(45deg, rgba(72, 209, 204, 0.8), rgba(255, 105, 180, 0.8));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      color: white;
-      text-align: center;
-      overflow: hidden;
-      animation: backgroundAnimation 15s infinite alternate;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TikTok Autumn Limited VIP Member Benefits Lottery</title>
+<style>
+  :root{
+    --bg1:#0b0f1a; --bg2:#121b2e; --neon:#00e5ff; --neon2:#a855f7; --accent:#22d3ee; --gold:#ffe066;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:#e6f4ff; font-family: Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    background: radial-gradient(1200px 800px at 10% 10%, rgba(168,85,247,.25), transparent 50%),
+                radial-gradient(1000px 700px at 90% 20%, rgba(34,211,238,.18), transparent 55%),
+                radial-gradient(900px 600px at 50% 110%, rgba(0,229,255,.15), transparent 60%), linear-gradient(180deg, var(--bg1), var(--bg2));
+    overflow-x:hidden;
+  }
+  .grid{position:fixed; inset:0; pointer-events:none; opacity:.35;
+    background-image: linear-gradient(transparent 95%, rgba(0,229,255,.35) 96%), linear-gradient(90deg, transparent 95%, rgba(168,85,247,.28) 96%);
+    background-size: 28px 28px, 28px 28px; transform: perspective(800px) rotateX(55deg) translateY(-20%);
+    animation: drift 18s linear infinite; filter: drop-shadow(0 0 8px rgba(0,229,255,.25)); }
+  @keyframes drift{ to{ background-position:0 280px, 280px 0 } }
 
-    @keyframes backgroundAnimation {
-      0% {
-        background: linear-gradient(45deg, rgba(72, 209, 204, 0.8), rgba(255, 105, 180, 0.8));
-      }
-      50% {
-        background: linear-gradient(45deg, rgba(255, 105, 180, 0.7), rgba(72, 209, 204, 0.8));
-      }
-      100% {
-        background: linear-gradient(45deg, rgba(255, 0, 255, 0.7), rgba(0, 204, 255, 0.8));
-      }
-    }
+  .wrap{position:relative; min-height:100%; display:flex; align-items:center; justify-content:center; padding:20px}
+  .card{ width:min(1100px, 96vw); background:rgba(6,10,20,.75); backdrop-filter: blur(10px);
+    border:1px solid rgba(0,229,255,.25); border-radius:18px; padding:28px; box-shadow: 0 0 0 1px rgba(168,85,247,.15), 0 12px 40px rgba(0,0,0,.45), 0 0 60px rgba(168,85,247,.25) inset; }
+  .title{ margin:0 0 8px; font-size: clamp(20px, 4vw, 28px); line-height:1.2; text-align:center; font-weight:800;
+    background: linear-gradient(90deg,var(--neon),var(--neon2),var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow: 0 0 16px rgba(0,229,255,.35); }
+  .subtitle{margin:0 0 18px; text-align:center; opacity:.85; font-size:14px}
 
-    #lottery-container {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 450px;
-      position: relative;
-      overflow: hidden;
-      animation: fadeIn 2s;
-    }
+  /* Prize gallery (pre-draw) */
+  .gallery{ display:grid; gap:14px; margin:18px 0 22px; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); }
+  .item{ position:relative; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); }
+  .thumb{ aspect-ratio: 16/10; width:100%; object-fit: cover; display:block; filter:saturate(1.08) contrast(1.03); }
+  .badge{ position:absolute; top:10px; left:10px; background:rgba(0,0,0,.55); padding:6px 10px; border-radius:999px; font-size:12px; display:flex; gap:6px; align-items:center; border:1px solid rgba(255,255,255,.15)}
+  .cap{ padding:10px 12px; font-size:13px; color:#cff8ff; display:flex; align-items:center; gap:8px; border-top:1px solid rgba(255,255,255,.08) }
+  .cap .emoji{font-size:16px}
 
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
+  .gate{ display:grid; gap:12px; margin:10px 0 6px; grid-template-columns: 1fr; }
+  .sig-block{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px; }
+  .sig-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:13px; opacity:.9 }
+  .sig-pad{ display:block; width:100%; height:140px; background:#0e1525; border-radius:10px; border:1px solid rgba(0,229,255,.25); box-shadow: inset 0 0 18px rgba(0,229,255,.1); touch-action:none }
+  .sig-actions{display:flex; gap:10px; margin-top:8px}
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      font-weight: bold;
-      color: #ffeb3b;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-    }
+  .agree{display:flex; align-items:center; gap:8px; font-size:13px; opacity:.9}
+  .btn{ appearance:none; border:none; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer; color:#051019;
+    background:linear-gradient(90deg,var(--neon),var(--accent)); box-shadow: 0 6px 20px rgba(0,229,255,.35), 0 0 0 1px rgba(0,229,255,.25) inset; transition: transform .08s ease, filter .2s ease; }
+  .btn:hover{filter:brightness(1.08)} .btn:active{transform: translateY(1px)}
+  .btn.ghost{ background:transparent; color:#cfefff; border:1px solid rgba(255,255,255,.2); box-shadow:none }
+  .draw-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+  .draw-btn{flex:1; min-width:220px; font-size:16px}
+  .disabled{opacity:.55; cursor:not-allowed; filter:grayscale(.3)}
 
-    .prizes-list {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin: 15px 0;
-      color: #ddd;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-    }
+  /* Loading + result */
+  .center{ text-align:center }
+  .spinner{ width:56px; height:56px; border-radius:50%; border:3px solid rgba(255,255,255,.18); border-top-color: var(--neon); margin:14px auto 0; animation: spin 1s linear infinite }
+  @keyframes spin{ to{ transform:rotate(360deg) } }
+  .result{ margin-top:14px; text-align:center; padding:16px; border-radius:14px; background:rgba(0,229,255,.07); border:1px solid rgba(0,229,255,.25) }
+  .headline{ font-size: clamp(18px, 3.8vw, 28px); margin:0 0 8px; color:var(--gold); font-weight:800; text-shadow:0 0 18px rgba(255,224,102,.35) }
+  .big-preview{ width:min(520px, 86vw); aspect-ratio: 16/10; object-fit: cover; border-radius:16px; border:1px solid rgba(255,255,255,.18); box-shadow:0 10px 28px rgba(0,0,0,.45); display:block; margin:12px auto }
+  .desc{ margin:6px 0 0; opacity:.92; font-size:14px }
 
-    .prizes-list li {
-      margin: 12px 0;
-      color: #ffeb3b;
-      cursor: pointer;
-    }
-
-    .prizes-list li:hover {
-      color: #feb47b;
-    }
-
-    button {
-      background-color: #ff7e5f;
-      color: white;
-      border: none;
-      padding: 15px 40px;
-      font-size: 1.5rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      width: 100%;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    }
-
-    button:hover {
-      background-color: #feb47b;
-    }
-
-    button:disabled {
-      background-color: #aaa;
-      cursor: not-allowed;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #ffeb3b;
-      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
-    }
-
-    .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #ff7e5f;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #message {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-top: 20px;
-      font-weight: 500;
-    }
-
-    #message span {
-      color: #ffeb3b;
-    }
-
-  </style>
+  /* confetti */
+  .confetti{position:fixed; inset:0; pointer-events:none; overflow:hidden}
+  .confetti i{ position:absolute; width:8px; height:12px; background:var(--c,#fff); top:-12px; opacity:.9; transform:translateY(-100px) rotate(0); animation: fall linear forwards; border-radius:2px }
+  @keyframes fall{ to{ transform: translateY(110vh) rotate(540deg)} }
+  footer{margin-top:14px; text-align:center; opacity:.7; font-size:12px}
+  a{color:var(--accent); text-decoration:none}
+</style>
 </head>
 <body>
-  <div id="lottery-container">
-    <h1>TikTok Autumn Limited VIP Member Benefits Lottery</h1>
+<div class="grid"></div>
+<div class="wrap">
+  <div class="card">
+    <h1 class="title">TikTok Autumn Limited VIP Member Benefits Lottery</h1>
+    <p class="subtitle">Sign once to unlock the draw. One attempt per device. Good luck! ✨</p>
 
-    <!-- List of prizes before the user clicks "Spin" -->
-    <div id="prizes-list">
-      <ul class="prizes-list">
-        <li>1️⃣ Smart Home Set – Make your home smarter and more stylish!</li>
-        <li>2️⃣ British Brand Fashion Accessories – Showcase iconic British designs and stand out with exceptional taste!</li>
-        <li>3️⃣ Premium Skincare Sets – Luxurious care that will make you glow every day!</li>
-        <li>4️⃣ Classic British Tea Set – Enjoy authentic British tea culture from home!</li>
-        <li>5️⃣ Mystery Grand Prize – More surprise gifts to elevate your VIP status!</li>
-      </ul>
+    <!-- Prize gallery (shown before draw) -->
+    <div id="gallery" class="gallery">
+      <!-- Replace image URLs with your own assets/CDN links -->
+      <div class="item">
+        <img class="thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAP3CAIAAA..." alt="Smart Home Set" loading="lazy"/>
+        <span class="badge">🏠 Smart Home Set</span>
+        <div class="cap"><span class="emoji">✨</span> Make your home smarter and more stylish</div>
+      </div>
+      <div class="item">
+        <img class="thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAUACAIAAA..." alt="British Brand Fashion Accessories" loading="lazy"/>
+        <span class="badge">🇬🇧 Fashion Accessories</span>
+        <div class="cap"><span class="emoji">👜</span> Iconic British designs, standout taste</div>
+      </div>
+      <div class="item">
+        <img class="thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAPACAIAAA..." alt="Premium Skincare Sets" loading="lazy"/>
+        <span class="badge">🧴 Skincare Set</span>
+        <div class="cap"><span class="emoji">💖</span> Luxurious care that makes you glow</div>
+      </div>
+      <div class="item">
+        <img class="thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABEUAAAUACAIAAA..." alt="Classic British Tea Set" loading="lazy"/>
+        <span class="badge">🫖 Tea Set</span>
+        <div class="cap"><span class="emoji">🍪</span> Enjoy authentic British tea culture at home</div>
+      </div>
+      <div class="item">
+        <img class="thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAr8AAANkCAIAAA..." alt="Mystery Grand Prize" loading="lazy"/>
+        <span class="badge">🎁 Mystery Prize</span>
+        <div class="cap"><span class="emoji">🎉</span> Surprise gifts to elevate your VIP status</div>
+      </div>
     </div>
 
-    <!-- Lottery button -->
-    <button id="lottery-btn" onclick="drawLottery()">Spin the Wheel!</button>
+    <!-- Gate: signature + agree + draw button -->
+    <div id="gate" class="gate">
+      <div class="sig-block">
+        <div class="sig-head"><strong>✍️ Signature</strong><span id="sigStatus">Please sign to enable the draw</span></div>
+        <canvas id="sigPad" class="sig-pad"></canvas>
+        <div class="sig-actions">
+          <button class="btn ghost" id="clearSig" type="button">Clear</button>
+          <button class="btn" id="acceptSig" type="button">Confirm Signature</button>
+        </div>
+      </div>
+      <label class="agree"><input type="checkbox" id="agreeChk"/> I understand this is a one-time draw on this device and agree to the event rules.</label>
+      <div class="draw-row"><button class="btn draw-btn disabled" id="drawBtn" disabled>🚀 Spin the Wheel</button></div>
+    </div>
 
-    <!-- Loading spinner -->
-    <div id="spinner" class="spinner" style="display: none;"></div>
+    <!-- Loading + result -->
+    <div id="loading" class="center" style="display:none">
+      <div class="spinner" aria-label="Drawing..."></div>
+      <p style="margin:10px 0 0; opacity:.9">Computing your lucky prize…</p>
+    </div>
 
-    <!-- Display result -->
-    <div id="result"></div>
-    
-    <!-- Message displayed after drawing -->
-    <div id="message"></div>
+    <div id="resultBox" class="result" style="display:none">
+      <h2 class="headline" id="prizeText">🎉 Congratulations!</h2>
+      <img id="prizeImg" class="big-preview" src="" alt="Your Prize"/>
+      <p class="desc">Please contact our receptionist via <a id="tgLink" href="https://t.me/your-reception-bot" target="_blank" rel="noopener">Telegram</a> and tell them what you won. 📨<br/>🏆 Finish the VIP3 task to claim your prize!</p>
+    </div>
+
+    <footer>© TikTok VIP Autumn Event</footer>
   </div>
+</div>
+<div class="confetti" id="confetti"></div>
 
-  <script>
-    const prizes = [
-      "Smart Home Set – Make your home smarter and more stylish!",
-      "British Brand Fashion Accessories – Showcase iconic British designs and stand out with exceptional taste!",
-      "Premium Skincare Sets – Luxurious care that will make you glow every day!",
-      "Classic British Tea Set – Enjoy authentic British tea culture from home!",
-      "Mystery Grand Prize – More surprise gifts to elevate your VIP status!"
-    ];
+<script>
+  // ===== Config =====
+  const TELEGRAM_URL = "https://t.me/your-reception-bot"; // replace with your real link
+  const ONE_TIME_KEY = "vip_autumn_has_drawn_v2";
+  const PRIZES = [
+    { name:"Smart Home Set – Make your home smarter and more stylish!", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAP3CAIAAA...", emoji:"🏠" },
+    { name:"British Brand Fashion Accessories – Showcase iconic British designs!", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAUACAIAAA...", emoji:"🇬🇧" },
+    { name:"Premium Skincare Sets – Luxurious care that makes you glow!", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAPACAIAAA...", emoji:"🧴" },
+    { name:"Classic British Tea Set – Enjoy authentic British tea culture at home!", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABEUAAAUACAIAAA...", emoji:"🫖" },
+    { name:"Mystery Grand Prize – Surprise gifts to elevate your VIP status!", img:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAr8AAANkCAIAAA...", emoji:"🎁" }
+  ];
 
-    let hasDrawn = false;  // Flag to check if the user has already drawn
-    let prizeResult = ""; // Store the prize result for later display
+  // ===== Elements =====
+  const sigPad = document.getElementById('sigPad');
+  const ctx = sigPad.getContext('2d');
+  const sigStatus = document.getElementById('sigStatus');
+  const clearBtn = document.getElementById('clearSig');
+  const acceptBtn = document.getElementById('acceptSig');
+  const agreeChk = document.getElementById('agreeChk');
+  const drawBtn = document.getElementById('drawBtn');
+  const gallery = document.getElementById('gallery');
+  const gate = document.getElementById('gate');
+  const loading = document.getElementById('loading');
+  const resultBox = document.getElementById('resultBox');
+  const prizeText = document.getElementById('prizeText');
+  const prizeImg = document.getElementById('prizeImg');
+  const confetti = document.getElementById('confetti');
+  document.getElementById('tgLink').href = TELEGRAM_URL;
 
-    function drawLottery() {
-      if (hasDrawn) {
-        return;  // Prevent further draws
-      }
+  // ===== Signature pad =====
+  function resizeCanvas(){
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    const w = sigPad.clientWidth, h = sigPad.clientHeight;
+    sigPad.width = Math.floor(w * ratio);
+    sigPad.height = Math.floor(h * ratio);
+    ctx.setTransform(ratio,0,0,ratio,0,0);
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.lineWidth = 2.2; ctx.strokeStyle = '#9be8ff';
+    ctx.setLineDash([6,6]); ctx.beginPath(); ctx.moveTo(12, h-24); ctx.lineTo(w-12, h-24); ctx.stroke(); ctx.setLineDash([]);
+  }
+  function onResize(){ resizeCanvas(); }
+  window.addEventListener('resize', onResize);
+  resizeCanvas();
 
-      // Hide prize list and show loading spinner
-      document.getElementById('prizes-list').style.display = 'none';
-      document.getElementById('spinner').style.display = 'block';
-      document.getElementById('lottery-btn').disabled = true;  // Disable button
+  let drawing=false, signed=false, last=null, signatureConfirmed=false;
+  function pos(e){ if(e.touches && e.touches[0]){ const r=sigPad.getBoundingClientRect(); return {x:e.touches[0].clientX-r.left, y:e.touches[0].clientY-r.top}; } return {x:e.offsetX, y:e.offsetY}; }
+  function start(e){ drawing=true; last=pos(e); e.preventDefault(); }
+  function move(e){ if(!drawing) return; const p=pos(e); ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke(); last=p; signed=true; sigStatus.textContent='Signature captured ✔'; maybeEnable(); e.preventDefault(); }
+  function end(){ drawing=false; last=null; }
+  sigPad.addEventListener('mousedown', start); sigPad.addEventListener('mousemove', move); window.addEventListener('mouseup', end);
+  sigPad.addEventListener('touchstart', start, {passive:false}); sigPad.addEventListener('touchmove', move, {passive:false}); sigPad.addEventListener('touchend', end);
 
-      // Simulate waiting time
-      setTimeout(() => {
-        // Randomly pick a prize
-        const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
-        prizeResult = randomPrize; // Store the result
+  clearBtn.addEventListener('click', ()=>{ resizeCanvas(); signed=false; signatureConfirmed=false; sigStatus.textContent='Please sign to enable the draw'; maybeEnable(); });
+  acceptBtn.addEventListener('click', ()=>{ if(!signed){ sigStatus.textContent='Please sign first'; sigStatus.style.color='#ffd166'; return;} signatureConfirmed=true; sigStatus.textContent='Signature confirmed ✔'; sigStatus.style.color='#7dffaa'; maybeEnable(); });
+  agreeChk.addEventListener('change', maybeEnable);
 
-        // Hide the spinner and display the result
-        document.getElementById('spinner').style.display = 'none';
-        document.getElementById('result').textContent = `🎉 Congratulations! You've won: ${randomPrize}`;
-        document.getElementById('message').innerHTML = `
-          🎉 Please contact our reception via <a href="https://t.me/your-reception-bot" target="_blank" style="color: #ffeb3b; font-weight: bold;">Telegram</a> and tell them what you won! <br>
-          🏆 Complete the VIP3 task to claim your prize! <span style="color: #ffeb3b;">Good luck!</span>
-        `;
+  function maybeEnable(){ const locked = localStorage.getItem(ONE_TIME_KEY) === '1'; const ok = signatureConfirmed && agreeChk.checked && !locked; drawBtn.disabled = !ok; drawBtn.classList.toggle('disabled', !ok); }
 
-        // Disable the button to prevent further draws
-        document.getElementById('lottery-btn').disabled = true;
-        hasDrawn = true;  // Set the flag to true
-      }, 3000); // 3 seconds for the waiting animation
+  if(localStorage.getItem(ONE_TIME_KEY) === '1'){
+    gallery.style.display='none'; gate.style.display='none'; resultBox.style.display='block'; prizeText.textContent = 'You have already participated on this device.'; prizeImg.style.display='none';
+  } else { maybeEnable(); }
+
+  // ===== Draw flow =====
+  drawBtn.addEventListener('click', ()=>{
+    gallery.style.display='none'; gate.style.display='none'; loading.style.display='block';
+    setTimeout(()=>{
+      const pick = PRIZES[Math.floor(Math.random()*PRIZES.length)];
+      loading.style.display='none'; resultBox.style.display='block';
+      prizeText.innerHTML = `🎉 You've won: <span style="color:var(--gold)">${pick.name}</span>`;
+      prizeImg.src = pick.img; prizeImg.alt = pick.name;
+      fireConfetti();
+      localStorage.setItem(ONE_TIME_KEY,'1');
+    }, 2200);
+  });
+
+  // ===== Confetti =====
+  function fireConfetti(){
+    const colors = ['#00e5ff','#22d3ee','#a855f7','#ffe066','#7cfff3','#ff8bd1'];
+    for(let i=0;i<120;i++){
+      const p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.animationDuration=(1.5+Math.random()*1.8)+'s'; p.style.animationDelay=(Math.random()*0.6)+'s'; p.style.setProperty('--c', colors[Math.floor(Math.random()*colors.length)]); confetti.appendChild(p); setTimeout(()=>p.remove(), 3200);
     }
-  </script>
+  }
+</script>
 </body>
 </html>
-
