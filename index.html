@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 204, 255, 0.7), rgba(255, 165, 0, 0.7));
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 204, 255, 0.6));
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,18 +16,19 @@
       color: white;
       text-align: center;
       overflow: hidden;
+      background-color: #111;
       animation: backgroundAnimation 10s infinite alternate;
     }
 
     @keyframes backgroundAnimation {
       0% {
-        background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 204, 255, 0.7), rgba(255, 165, 0, 0.7));
+        background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 204, 255, 0.6));
       }
       50% {
-        background: radial-gradient(circle, rgba(255, 255, 0, 0.7), rgba(255, 0, 0, 0.7), rgba(0, 255, 255, 0.7));
+        background: radial-gradient(circle, rgba(0, 255, 0, 0.6), rgba(0, 204, 255, 0.7));
       }
       100% {
-        background: radial-gradient(circle, rgba(0, 255, 0, 0.7), rgba(255, 0, 255, 0.7), rgba(255, 0, 0, 0.7));
+        background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
       }
     }
 
@@ -49,11 +50,24 @@
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 20px;
       font-weight: bold;
       color: #ffeb3b;
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .prizes-list {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 15px 0;
+      color: #ddd;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .prizes-list li {
+      margin: 12px 0;
+      color: #ffeb3b;
     }
 
     button {
@@ -61,11 +75,12 @@
       color: white;
       border: none;
       padding: 15px 40px;
-      font-size: 1.2rem;
-      border-radius: 8px;
+      font-size: 1.5rem;
+      border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s;
       width: 100%;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     button:hover {
@@ -79,10 +94,10 @@
 
     #result {
       margin-top: 20px;
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: bold;
       color: #ffeb3b;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
     }
 
     .spinner {
@@ -116,9 +131,28 @@
 <body>
   <div id="lottery-container">
     <h1>TikTok Autumn Limited VIP Member Benefits Lottery</h1>
+
+    <!-- List of prizes before the user clicks "Spin" -->
+    <div id="prizes-list">
+      <ul class="prizes-list">
+        <li>1️⃣ Smart Home Set – Make your home smarter and more stylish!</li>
+        <li>2️⃣ British Brand Fashion Accessories – Showcase iconic British designs and stand out with exceptional taste!</li>
+        <li>3️⃣ Premium Skincare Sets – Luxurious care that will make you glow every day!</li>
+        <li>4️⃣ Classic British Tea Set – Enjoy authentic British tea culture from home!</li>
+        <li>5️⃣ Mystery Grand Prize – More surprise gifts to elevate your VIP status!</li>
+      </ul>
+    </div>
+
+    <!-- Lottery button -->
     <button id="lottery-btn" onclick="drawLottery()">Spin the Wheel!</button>
+
+    <!-- Loading spinner -->
     <div id="spinner" class="spinner" style="display: none;"></div>
+
+    <!-- Display result -->
     <div id="result"></div>
+    
+    <!-- Message displayed after drawing -->
     <div id="message"></div>
   </div>
 
@@ -139,7 +173,8 @@
         return;  // Prevent further draws
       }
 
-      // Show the spinner (waiting animation)
+      // Hide prize list and show loading spinner
+      document.getElementById('prizes-list').style.display = 'none';
       document.getElementById('spinner').style.display = 'block';
       document.getElementById('lottery-btn').disabled = true;  // Disable button
 
