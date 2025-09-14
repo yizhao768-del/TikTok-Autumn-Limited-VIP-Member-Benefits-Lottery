@@ -6,64 +6,71 @@
   <title>TikTok Autumn Limited VIP Member Benefits Lottery</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      flex-direction: column;
-    }
-
-    h1 {
-      color: #333;
+      margin: 0;
+      color: white;
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 20px;
     }
 
     #lottery-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       width: 100%;
       max-width: 400px;
     }
 
-    #lottery-btn {
-      background-color: #007bff;
-      color: white;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    #lottery-btn:hover {
-      background-color: #0056b3;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 1.2rem;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
       font-weight: bold;
-      color: #007bff;
+      color: #ffeb3b;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      margin-bottom: 20px;
     }
 
     li {
-      margin: 10px 0;
-      font-size: 1.1rem;
+      margin: 15px 0;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    button {
+      background-color: #ff7e5f;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #feb47b;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffeb3b;
+    }
+
+    #lottery-btn:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -77,7 +84,7 @@
       <li>4️⃣ Classic British Tea Set – Enjoy authentic British tea culture from home!</li>
       <li>5️⃣ Mystery Grand Prize – More surprise gifts to elevate your VIP status!</li>
     </ul>
-    <button id="lottery-btn">Spin the Wheel!</button>
+    <button id="lottery-btn" onclick="drawLottery()">Spin the Wheel!</button>
     <div id="result"></div>
   </div>
 
@@ -90,14 +97,23 @@
       "Mystery Grand Prize – More surprise gifts to elevate your VIP status!"
     ];
 
-    const lotteryButton = document.getElementById('lottery-btn');
-    const resultDiv = document.getElementById('result');
+    let hasDrawn = false;  // Flag to check if the user has already drawn
 
-    lotteryButton.addEventListener('click', function() {
+    function drawLottery() {
+      if (hasDrawn) {
+        return;  // Prevent further draws
+      }
+
       // Randomly pick a prize
       const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
-      resultDiv.textContent = `🎉 Congratulations! You've won: ${randomPrize}`;
-    });
+      
+      // Display the result
+      document.getElementById('result').textContent = `🎉 Congratulations! You've won: ${randomPrize}`;
+
+      // Disable the button to prevent further clicks
+      document.getElementById('lottery-btn').disabled = true;
+      hasDrawn = true;  // Set the flag to true
+    }
   </script>
 </body>
 </html>
