@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 204, 255, 0.6));
+      background: linear-gradient(45deg, rgba(72, 209, 204, 0.8), rgba(255, 105, 180, 0.8));
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,24 +16,23 @@
       color: white;
       text-align: center;
       overflow: hidden;
-      background-color: #111;
-      animation: backgroundAnimation 10s infinite alternate;
+      animation: backgroundAnimation 15s infinite alternate;
     }
 
     @keyframes backgroundAnimation {
       0% {
-        background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 204, 255, 0.6));
+        background: linear-gradient(45deg, rgba(72, 209, 204, 0.8), rgba(255, 105, 180, 0.8));
       }
       50% {
-        background: radial-gradient(circle, rgba(0, 255, 0, 0.6), rgba(0, 204, 255, 0.7));
+        background: linear-gradient(45deg, rgba(255, 105, 180, 0.7), rgba(72, 209, 204, 0.8));
       }
       100% {
-        background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
+        background: linear-gradient(45deg, rgba(255, 0, 255, 0.7), rgba(0, 204, 255, 0.8));
       }
     }
 
     #lottery-container {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -54,7 +53,7 @@
       margin-bottom: 20px;
       font-weight: bold;
       color: #ffeb3b;
-      text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     }
 
     .prizes-list {
@@ -68,6 +67,11 @@
     .prizes-list li {
       margin: 12px 0;
       color: #ffeb3b;
+      cursor: pointer;
+    }
+
+    .prizes-list li:hover {
+      color: #feb47b;
     }
 
     button {
@@ -200,5 +204,4 @@
   </script>
 </body>
 </html>
-
 
