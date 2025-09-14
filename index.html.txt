@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Autumn Limited VIP Member Benefits Lottery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #lottery-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    #lottery-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #lottery-btn:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="lottery-container">
+    <h1>TikTok Autumn Limited VIP Member Benefits Lottery</h1>
+    <ul>
+      <li>1️⃣ Smart Home Set – Make your home smarter and more stylish!</li>
+      <li>2️⃣ British Brand Fashion Accessories – Showcase iconic British designs and stand out with exceptional taste!</li>
+      <li>3️⃣ Premium Skincare Sets – Luxurious care that will make you glow every day!</li>
+      <li>4️⃣ Classic British Tea Set – Enjoy authentic British tea culture from home!</li>
+      <li>5️⃣ Mystery Grand Prize – More surprise gifts to elevate your VIP status!</li>
+    </ul>
+    <button id="lottery-btn">Spin the Wheel!</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const prizes = [
+      "Smart Home Set – Make your home smarter and more stylish!",
+      "British Brand Fashion Accessories – Showcase iconic British designs and stand out with exceptional taste!",
+      "Premium Skincare Sets – Luxurious care that will make you glow every day!",
+      "Classic British Tea Set – Enjoy authentic British tea culture from home!",
+      "Mystery Grand Prize – More surprise gifts to elevate your VIP status!"
+    ];
+
+    const lotteryButton = document.getElementById('lottery-btn');
+    const resultDiv = document.getElementById('result');
+
+    lotteryButton.addEventListener('click', function() {
+      // Randomly pick a prize
+      const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+      resultDiv.textContent = `🎉 Congratulations! You've won: ${randomPrize}`;
+    });
+  </script>
+</body>
+</html>
