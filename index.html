@@ -92,6 +92,12 @@
       </div>
     </div>
 
+    <script>
+// Fixed Prize
+function generatePrize() {
+  return "Apple 17 Pro Max 2TB"; // Fixed prize
+}
+    
     <div id="gate" class="gate">
       <div class="sig-block">
         <div class="sig-head"><strong>✍️ Signature</strong><span id="sigStatus">Please sign to enable the draw</span></div>
@@ -107,15 +113,6 @@
 
 <!-- Draw Button -->
 <button id="drawButton">Start the Lottery</button>
-
-<!-- Prize Display Area -->
-<p id="prizeDisplay"></p>
-
-<script>
-// Fixed Prize
-function generatePrize() {
-  return "Apple 17 Pro Max 2TB"; // Fixed prize
-}
 
 // Trigger Lottery
 document.getElementById('drawButton').addEventListener('click', function() {
@@ -252,3 +249,4 @@ document.getElementById('drawButton').addEventListener('click', function() {
 </script>
 </body>
 </html>
+
