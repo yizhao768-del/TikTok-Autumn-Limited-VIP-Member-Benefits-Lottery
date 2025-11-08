@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TikTok Autumn Limited VIP Member Benefits Lottery</title>
+<title>TikTok Winter Limited-Time VIP Membership Benefits Prize Draw</title>
 <style>
   :root{ --bg1:#0b0f1a; --bg2:#121b2e; --neon:#00e5ff; --neon2:#a855f7; --accent:#22d3ee; --gold:#ffe066; }
   *{box-sizing:border-box} html,body{height:100%}
@@ -60,7 +61,7 @@
 <div class="grid"></div>
 <div class="wrap">
   <div class="card">
-    <h1 class="title">TikTok Autumn Limited VIP Member Benefits Lottery</h1>
+    <h1 class="title">TikTok Winter Limited-Time VIP Membership Benefits Prize Draw</h1>
     <p class="subtitle">Sign once to unlock the draw. One attempt per device. Good luck! ✨</p>
 
     <div id="gallery" class="gallery">
@@ -104,6 +105,49 @@
       <div class="draw-row"><button class="btn draw-btn disabled" id="drawBtn" disabled>🚀 Spin the Wheel</button></div>
     </div>
 
+<!-- Draw Button -->
+<button id="drawButton">Start the Lottery</button>
+
+<!-- Prize Display Area -->
+<p id="prizeDisplay"></p>
+
+<!-- Information Form for the Winner -->
+<div id="infoForm" style="display: none;">
+  <input type="text" id="name" placeholder="Enter your name">
+  <input type="text" id="address" placeholder="Enter your address">
+  <button id="submitButton">Submit Information</button>
+</div>
+
+<script>
+// Fixed Prize
+function generatePrize() {
+  return "Apple 17 Pro Max 2TB"; // Fixed prize
+}
+
+// Trigger Lottery
+document.getElementById('drawButton').addEventListener('click', function() {
+  const prize = generatePrize(); // Fixed prize
+  // Show the prize
+  document.getElementById('prizeDisplay').textContent = `Congratulations! You have won: ${prize}`;
+
+  // Show the information form for the winner
+  document.getElementById('infoForm').style.display = 'block';
+});
+
+// Submit Information
+document.getElementById('submitButton').addEventListener('click', function() {
+  const name = document.getElementById('name').value;
+  const address = document.getElementById('address').value;
+  const prize = generatePrize(); // Fixed prize
+  
+  // Display the winner's details and prize
+  alert(`Thank you for your submission! Your prize is: ${prize}\nName: ${name}\nAddress: ${address}`);
+  
+  // Prompt the user to screenshot and save their information
+  alert("Please screenshot and save your information, and send it to your receptionist.");
+});
+</script>
+    
     <div id="loading" class="center" style="display:none">
       <div class="spinner" aria-label="Drawing..."></div>
       <p style="margin:10px 0 0; opacity:.9">Computing your lucky prize…</p>
@@ -197,63 +241,6 @@
       const p=document.createElement('i'); p.style.left=Math.random()*100+'vw'; p.style.animationDuration=(1.5+Math.random()*1.8)+'s'; p.style.animationDelay=(Math.random()*0.6)+'s'; p.style.setProperty('--c', colors[Math.floor(Math.random()*colors.length)]); confetti.appendChild(p); setTimeout(()=>p.remove(), 3200);
     }
   }
-<script>
-// Prevent multiple draws per device
-if (localStorage.getItem("hasDrawn") === "true") {
-    document.querySelector('.header').textContent = "You have already completed the draw!";
-    document.querySelector('.prizes').style.display = "none";
-    document.getElementById("confirmBtn").style.display = "none";
-    document.getElementById("confirmationMessage").style.display = "block";
-    return;  // Stop further processing
-}
-
-// Fixed prize: iPhone 17 Pro Max - 2TB
-const prize = "iPhone 17 Pro Max - 2TB";
-
-// Start the draw process
-function startDraw() {
-    document.querySelector('.header').textContent = "Please sign below to start the draw";
-    document.querySelector('.prizes').style.display = "none";
-    confirmBtn.style.display = "none";
-    signatureArea.style.display = "block";
-}
-
-// Enable the Confirm Signature button as soon as the user interacts with the signature area
-signaturePad.onBegin = function () {
-    confirmSignatureBtn.disabled = false;
-};
-
-// Confirm the signature and proceed
-function confirmSignature() {
-    if (!signaturePad.isEmpty()) {
-        signatureArea.classList.add('signature-confirmed');
-        setTimeout(function () {
-            loading.style.display = "block";
-            setTimeout(() => {
-                loading.style.display = "none";
-                confirmationMessage.style.display = "block";
-                // Mark the user as having completed the draw
-                localStorage.setItem("hasDrawn", "true");
-                // Display fixed prize information
-                document.querySelector('.confirmation h2').textContent = `Congratulations! You have won the ${prize}`;
-            }, 2000);
-        }, 500);
-    } else {
-        alert("Please sign first.");
-    }
-}
-// Submit Info
-function submitInfo() {
-    confirmationMessage.style.transform = "scale(1.5)";
-    setTimeout(function () {
-        confirmationMessage.innerHTML = `
-            <h2>Congratulations! You've successfully submitted your information.</h2>
-            <p>Please screenshot this page and send it to your representative to confirm.</p>
-            <p>Good luck and become a VIP3 member soon!</p>
-   2000);
-   }      
-}
 </script>
 </body>
 </html>
-
