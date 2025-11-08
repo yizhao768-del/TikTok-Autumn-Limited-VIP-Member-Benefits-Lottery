@@ -111,13 +111,6 @@
 <!-- Prize Display Area -->
 <p id="prizeDisplay"></p>
 
-<!-- Information Form for the Winner -->
-<div id="infoForm" style="display: none;">
-  <input type="text" id="name" placeholder="Enter your name">
-  <input type="text" id="address" placeholder="Enter your address">
-  <button id="submitButton">Submit Information</button>
-</div>
-
 <script>
 // Fixed Prize
 function generatePrize() {
@@ -159,7 +152,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
       <p class="desc">Please contact our receptionist via <a id="tgLink" href="https://t.me/your-reception-bot" target="_blank" rel="noopener">Telegram</a> and tell them what you won. 📨<br/>🏆 Finish the VIP3 task to claim your prize!</p>
     </div>
 
-    <footer>© TikTok VIP Autumn Event</footer>
+    <footer>© TikTok Winter Limited-Time VIP Membership Benefits Prize Draw</footer>
   </div>
 </div>
 <div class="confetti" id="confetti"></div>
@@ -219,7 +212,7 @@ document.getElementById('submitButton').addEventListener('click', function() {
   function maybeEnable(){ const locked = localStorage.getItem(ONE_TIME_KEY) === '1'; const ok = signatureConfirmed && agreeChk.checked && !locked; drawBtn.disabled = !ok; drawBtn.classList.toggle('disabled', !ok); }
 
   if(localStorage.getItem(ONE_TIME_KEY) === '1'){
-    gallery.style.display='none'; gate.style.display='none'; resultBox.style.display='block'; prizeText.textContent = 'You have already participated on this device.'; prizeImg.style.display='none';
+    gallery.style.display='none'; gate.style.display='none'; resultBox.style.display='block'; prizeText.textContent = 'You have entered the prize draw, and your prize is an Apple iPhone 17 Pro Max 2TB.'; prizeImg.style.display='none';
   } else { maybeEnable(); }
 
   // Draw
@@ -234,6 +227,21 @@ document.getElementById('submitButton').addEventListener('click', function() {
       localStorage.setItem(ONE_TIME_KEY,'1');
     }, 2200);
   });
+<script>
+// Fixed Prize
+function generatePrize() {
+  return "Apple 17 Pro Max 2TB"; // Fixed prize
+}
+
+// Trigger Lottery
+document.getElementById('drawButton').addEventListener('click', function() {
+  const prize = generatePrize(); // Fixed prize
+  // Show the prize
+  document.getElementById('prizeDisplay').textContent = `Congratulations! You have won: ${prize}`;
+
+  // Show the information form for the winner
+  document.getElementById('infoForm').style.display = 'block';
+});
 
   function fireConfetti(){
     const colors = ['#00e5ff','#22d3ee','#a855f7','#ffe066','#7cfff3','#ff8bd1'];
